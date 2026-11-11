@@ -1,0 +1,678 @@
+{
+  "evaluation": {
+    "rows": {
+      "rules_only": {
+        "micro_precision": 0.9622,
+        "micro_recall": 0.5205,
+        "micro_f1": 0.6755,
+        "macro_f1": 0.6805,
+        "exact_match": 0.4133,
+        "cost_per_1k": 0.0001,
+        "tier_share": {
+          "rules": 1.0
+        },
+        "llm_share": 0.0,
+        "sentiment": {
+          "aspect_accuracy": 0.9607,
+          "aspect_pairs": 585,
+          "aspect_f1": {
+            "negative": 0.9727,
+            "neutral": 0.7952,
+            "positive": 0.9754
+          },
+          "aspect_macro_f1": 0.9144,
+          "overall_accuracy": 0.4853
+        }
+      },
+      "classifier_only": {
+        "micro_precision": 1.0,
+        "micro_recall": 0.8959,
+        "micro_f1": 0.9451,
+        "macro_f1": 0.9327,
+        "exact_match": 0.8747,
+        "cost_per_1k": 0.0001,
+        "tier_share": {
+          "classifier": 1.0
+        },
+        "llm_share": 0.0,
+        "sentiment": {
+          "aspect_accuracy": 0.9196,
+          "aspect_pairs": 1007,
+          "aspect_f1": {
+            "negative": 0.9433,
+            "neutral": 0.7629,
+            "positive": 0.8855
+          },
+          "aspect_macro_f1": 0.8639,
+          "overall_accuracy": 0.8373
+        }
+      },
+      "llm_all": {
+        "micro_precision": 0.9726,
+        "micro_recall": 0.9475,
+        "micro_f1": 0.9599,
+        "macro_f1": 0.9589,
+        "exact_match": 0.8893,
+        "cost_per_1k": 0.0783,
+        "tier_share": {
+          "llm": 1.0
+        },
+        "llm_share": 1.0,
+        "sentiment": {
+          "aspect_accuracy": 0.9239,
+          "aspect_pairs": 1065,
+          "aspect_f1": {
+            "negative": 0.949,
+            "neutral": 0.6406,
+            "positive": 0.9247
+          },
+          "aspect_macro_f1": 0.8381,
+          "overall_accuracy": 0.8253
+        }
+      },
+      "cascade": {
+        "micro_precision": 0.9881,
+        "micro_recall": 0.9635,
+        "micro_f1": 0.9757,
+        "macro_f1": 0.9739,
+        "exact_match": 0.936,
+        "cost_per_1k": 0.019,
+        "tier_share": {
+          "classifier": 0.544,
+          "llm": 0.1973,
+          "rules": 0.2587
+        },
+        "llm_share": 0.1973,
+        "sentiment": {
+          "aspect_accuracy": 0.9261,
+          "aspect_pairs": 1083,
+          "aspect_f1": {
+            "negative": 0.9497,
+            "neutral": 0.6942,
+            "positive": 0.9145
+          },
+          "aspect_macro_f1": 0.8528,
+          "overall_accuracy": 0.864
+        }
+      }
+    },
+    "sweep": [
+      {
+        "policy": {
+          "t_rules": null,
+          "t_clf": 0.3
+        },
+        "label": "rules off, classifier 0.30, llm on",
+        "micro_f1": 0.9728,
+        "macro_f1": 0.9698,
+        "cost_per_1k": 0.0167,
+        "llm_share": 0.172
+      },
+      {
+        "policy": {
+          "t_rules": null,
+          "t_clf": 0.4
+        },
+        "label": "rules off, classifier 0.40, llm on",
+        "micro_f1": 0.9788,
+        "macro_f1": 0.9755,
+        "cost_per_1k": 0.0221,
+        "llm_share": 0.2293
+      },
+      {
+        "policy": {
+          "t_rules": null,
+          "t_clf": 0.5
+        },
+        "label": "rules off, classifier 0.50, llm on",
+        "micro_f1": 0.9793,
+        "macro_f1": 0.9776,
+        "cost_per_1k": 0.0275,
+        "llm_share": 0.2893
+      },
+      {
+        "policy": {
+          "t_rules": null,
+          "t_clf": 0.6
+        },
+        "label": "rules off, classifier 0.60, llm on",
+        "micro_f1": 0.9794,
+        "macro_f1": 0.977,
+        "cost_per_1k": 0.0312,
+        "llm_share": 0.3307
+      },
+      {
+        "policy": {
+          "t_rules": null,
+          "t_clf": 0.7
+        },
+        "label": "rules off, classifier 0.70, llm on",
+        "micro_f1": 0.9771,
+        "macro_f1": 0.9759,
+        "cost_per_1k": 0.0366,
+        "llm_share": 0.396
+      },
+      {
+        "policy": {
+          "t_rules": null,
+          "t_clf": 0.8
+        },
+        "label": "rules off, classifier 0.80, llm on",
+        "micro_f1": 0.9767,
+        "macro_f1": 0.9745,
+        "cost_per_1k": 0.0427,
+        "llm_share": 0.4693
+      },
+      {
+        "policy": {
+          "t_rules": null,
+          "t_clf": 0.9
+        },
+        "label": "rules off, classifier 0.90, llm on",
+        "micro_f1": 0.9753,
+        "macro_f1": 0.9733,
+        "cost_per_1k": 0.0539,
+        "llm_share": 0.628
+      },
+      {
+        "policy": {
+          "t_rules": 0.9,
+          "t_clf": 0.3
+        },
+        "label": "rules 0.90, classifier 0.30, llm on",
+        "micro_f1": 0.971,
+        "macro_f1": 0.9692,
+        "cost_per_1k": 0.0141,
+        "llm_share": 0.1453
+      },
+      {
+        "policy": {
+          "t_rules": 0.9,
+          "t_clf": 0.4
+        },
+        "label": "rules 0.90, classifier 0.40, llm on",
+        "micro_f1": 0.9757,
+        "macro_f1": 0.9739,
+        "cost_per_1k": 0.019,
+        "llm_share": 0.1973
+      },
+      {
+        "policy": {
+          "t_rules": 0.9,
+          "t_clf": 0.5
+        },
+        "label": "rules 0.90, classifier 0.50, llm on",
+        "micro_f1": 0.9771,
+        "macro_f1": 0.9771,
+        "cost_per_1k": 0.0235,
+        "llm_share": 0.248
+      },
+      {
+        "policy": {
+          "t_rules": 0.9,
+          "t_clf": 0.6
+        },
+        "label": "rules 0.90, classifier 0.60, llm on",
+        "micro_f1": 0.9767,
+        "macro_f1": 0.9757,
+        "cost_per_1k": 0.0262,
+        "llm_share": 0.2773
+      },
+      {
+        "policy": {
+          "t_rules": 0.9,
+          "t_clf": 0.7
+        },
+        "label": "rules 0.90, classifier 0.70, llm on",
+        "micro_f1": 0.9749,
+        "macro_f1": 0.975,
+        "cost_per_1k": 0.0301,
+        "llm_share": 0.3253
+      },
+      {
+        "policy": {
+          "t_rules": 0.9,
+          "t_clf": 0.8
+        },
+        "label": "rules 0.90, classifier 0.80, llm on",
+        "micro_f1": 0.9749,
+        "macro_f1": 0.9741,
+        "cost_per_1k": 0.0347,
+        "llm_share": 0.3813
+      },
+      {
+        "policy": {
+          "t_rules": 0.9,
+          "t_clf": 0.9
+        },
+        "label": "rules 0.90, classifier 0.90, llm on",
+        "micro_f1": 0.974,
+        "macro_f1": 0.9731,
+        "cost_per_1k": 0.0434,
+        "llm_share": 0.504
+      }
+    ],
+    "operating_point": {
+      "policy": {
+        "t_rules": 0.9,
+        "t_clf": 0.4
+      },
+      "label": "rules 0.90, classifier 0.40, llm on"
+    },
+    "n_test": 750
+  },
+  "per_theme": {
+    "login_problems": {
+      "precision": 0.9892,
+      "recall": 0.9684,
+      "f1": 0.9787,
+      "support": 95
+    },
+    "slow_sync": {
+      "precision": 1.0,
+      "recall": 0.945,
+      "f1": 0.9717,
+      "support": 109
+    },
+    "pricing_too_high": {
+      "precision": 1.0,
+      "recall": 0.9798,
+      "f1": 0.9898,
+      "support": 99
+    },
+    "love_the_design": {
+      "precision": 0.9892,
+      "recall": 0.9684,
+      "f1": 0.9787,
+      "support": 95
+    },
+    "missing_export": {
+      "precision": 0.9815,
+      "recall": 0.9815,
+      "f1": 0.9815,
+      "support": 54
+    },
+    "notifications_spam": {
+      "precision": 1.0,
+      "recall": 0.9344,
+      "f1": 0.9661,
+      "support": 61
+    },
+    "app_stability": {
+      "precision": 0.975,
+      "recall": 0.963,
+      "f1": 0.9689,
+      "support": 81
+    },
+    "battery_drain": {
+      "precision": 1.0,
+      "recall": 0.9677,
+      "f1": 0.9836,
+      "support": 31
+    },
+    "great_support": {
+      "precision": 1.0,
+      "recall": 0.975,
+      "f1": 0.9873,
+      "support": 40
+    },
+    "slow_support": {
+      "precision": 1.0,
+      "recall": 0.9487,
+      "f1": 0.9737,
+      "support": 39
+    },
+    "billing_errors": {
+      "precision": 1.0,
+      "recall": 0.9821,
+      "f1": 0.991,
+      "support": 56
+    },
+    "easy_to_use": {
+      "precision": 1.0,
+      "recall": 0.9737,
+      "f1": 0.9867,
+      "support": 76
+    },
+    "search_broken": {
+      "precision": 0.9697,
+      "recall": 0.9697,
+      "f1": 0.9697,
+      "support": 33
+    },
+    "offline_mode": {
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1": 0.9333,
+      "support": 24
+    },
+    "dark_mode_request": {
+      "precision": 0.9615,
+      "recall": 1.0,
+      "f1": 0.9804,
+      "support": 25
+    },
+    "data_loss": {
+      "precision": 1.0,
+      "recall": 0.9655,
+      "f1": 0.9825,
+      "support": 29
+    },
+    "ads_intrusive": {
+      "precision": 1.0,
+      "recall": 0.8919,
+      "f1": 0.9429,
+      "support": 37
+    },
+    "onboarding_confusing": {
+      "precision": 1.0,
+      "recall": 0.9706,
+      "f1": 0.9851,
+      "support": 34
+    },
+    "collaboration": {
+      "precision": 0.9265,
+      "recall": 1.0,
+      "f1": 0.9618,
+      "support": 63
+    },
+    "performance_fast": {
+      "precision": 0.9762,
+      "recall": 0.9535,
+      "f1": 0.9647,
+      "support": 43
+    }
+  },
+  "detection": {
+    "release": "2025-10-20",
+    "hotfix": "2025-11-17",
+    "price_change": "2025-07-01",
+    "new_issue": "widget_crash_v6",
+    "theme_alert_day": "2025-11-01",
+    "theme_alert_lag_days": 12,
+    "cluster_alert_day": "2025-10-23",
+    "cluster_alert_lag_days": 3,
+    "caught": true,
+    "pricing_caught": true,
+    "other_alerts": [
+      {
+        "theme": "love_the_design",
+        "label": "Love the design",
+        "kind": "negative_share",
+        "first_day": "2025-09-21",
+        "last_day": "2025-09-21",
+        "days_flagged": 1,
+        "peak_day": "2025-09-21",
+        "peak_lift": 0.145,
+        "window_count": 65,
+        "p_value": 8.05e-05
+      }
+    ]
+  },
+  "discovery": {
+    "nmf_k20": {
+      "method": "nmf",
+      "k": 20,
+      "n": 8000,
+      "purity": 0.303,
+      "nmi": 0.2283,
+      "themes_recovered": 2
+    },
+    "kmeans_k20": {
+      "method": "kmeans",
+      "k": 20,
+      "n": 8000,
+      "purity": 0.243,
+      "nmi": 0.1879,
+      "themes_recovered": 6
+    },
+    "nmf_k40": {
+      "method": "nmf",
+      "k": 40,
+      "n": 8000,
+      "purity": 0.4291,
+      "nmi": 0.3187,
+      "themes_recovered": 9
+    }
+  },
+  "drivers": {
+    "n": 10031,
+    "r2": 0.4916,
+    "intercept": 8.442,
+    "drivers": [
+      {
+        "theme": "data_loss",
+        "label": "Data loss",
+        "coef": -2.958,
+        "ci_low": -3.11,
+        "ci_high": -2.806,
+        "p_value": 3.67e-298,
+        "prevalence": 0.0317,
+        "impact": -0.0938,
+        "planted": -3.2
+      },
+      {
+        "theme": "app_stability",
+        "label": "Crashes and freezes",
+        "coef": -2.234,
+        "ci_low": -2.353,
+        "ci_high": -2.114,
+        "p_value": 1.49e-276,
+        "prevalence": 0.0692,
+        "impact": -0.1545,
+        "planted": -2.152
+      },
+      {
+        "theme": "billing_errors",
+        "label": "Billing errors",
+        "coef": -2.044,
+        "ci_low": -2.217,
+        "ci_high": -1.871,
+        "p_value": 1.58e-115,
+        "prevalence": 0.0275,
+        "impact": -0.0562,
+        "planted": -2.4
+      },
+      {
+        "theme": "login_problems",
+        "label": "Login problems",
+        "coef": -1.419,
+        "ci_low": -1.519,
+        "ci_high": -1.32,
+        "p_value": 7.52e-165,
+        "prevalence": 0.0716,
+        "impact": -0.1016,
+        "planted": -1.546
+      },
+      {
+        "theme": "slow_support",
+        "label": "Slow support",
+        "coef": -1.278,
+        "ci_low": -1.393,
+        "ci_high": -1.163,
+        "p_value": 1.3e-102,
+        "prevalence": 0.0551,
+        "impact": -0.0705,
+        "planted": -1.5
+      },
+      {
+        "theme": "slow_sync",
+        "label": "Slow sync",
+        "coef": -1.248,
+        "ci_low": -1.336,
+        "ci_high": -1.159,
+        "p_value": 1.54e-162,
+        "prevalence": 0.1041,
+        "impact": -0.1298,
+        "planted": -1.324
+      },
+      {
+        "theme": "ads_intrusive",
+        "label": "Intrusive ads",
+        "coef": -0.907,
+        "ci_low": -1.044,
+        "ci_high": -0.77,
+        "p_value": 3.54e-38,
+        "prevalence": 0.0392,
+        "impact": -0.0355,
+        "planted": -1.1
+      },
+      {
+        "theme": "search_broken",
+        "label": "Search broken",
+        "coef": -0.882,
+        "ci_low": -1.011,
+        "ci_high": -0.754,
+        "p_value": 4.76e-41,
+        "prevalence": 0.0385,
+        "impact": -0.034,
+        "planted": -0.9
+      },
+      {
+        "theme": "notifications_spam",
+        "label": "Notifications spam",
+        "coef": -0.755,
+        "ci_low": -0.847,
+        "ci_high": -0.663,
+        "p_value": 1.5e-57,
+        "prevalence": 0.0805,
+        "impact": -0.0608,
+        "planted": -0.8
+      },
+      {
+        "theme": "pricing_too_high",
+        "label": "Pricing too high",
+        "coef": -0.746,
+        "ci_low": -0.816,
+        "ci_high": -0.677,
+        "p_value": 1.24e-96,
+        "prevalence": 0.1835,
+        "impact": -0.137,
+        "planted": -0.808
+      },
+      {
+        "theme": "battery_drain",
+        "label": "Battery drain",
+        "coef": -0.694,
+        "ci_low": -0.843,
+        "ci_high": -0.545,
+        "p_value": 8.71e-20,
+        "prevalence": 0.0279,
+        "impact": -0.0194,
+        "planted": -0.9
+      },
+      {
+        "theme": "onboarding_confusing",
+        "label": "Confusing onboarding",
+        "coef": -0.545,
+        "ci_low": -0.663,
+        "ci_high": -0.427,
+        "p_value": 1.63e-19,
+        "prevalence": 0.0469,
+        "impact": -0.0255,
+        "planted": -0.6
+      },
+      {
+        "theme": "missing_export",
+        "label": "Missing export",
+        "coef": -0.154,
+        "ci_low": -0.247,
+        "ci_high": -0.062,
+        "p_value": 0.00108,
+        "prevalence": 0.079,
+        "impact": -0.0122,
+        "planted": -0.325
+      },
+      {
+        "theme": "offline_mode",
+        "label": "Offline mode",
+        "coef": -0.148,
+        "ci_low": -0.27,
+        "ci_high": -0.026,
+        "p_value": 0.0174,
+        "prevalence": 0.041,
+        "impact": -0.0061,
+        "planted": -0.32
+      },
+      {
+        "theme": "dark_mode_request",
+        "label": "Dark mode request",
+        "coef": 0.05,
+        "ci_low": -0.078,
+        "ci_high": 0.178,
+        "p_value": 0.441,
+        "prevalence": 0.039,
+        "impact": 0.002,
+        "planted": -0.05
+      },
+      {
+        "theme": "collaboration",
+        "label": "Family sharing",
+        "coef": 0.391,
+        "ci_low": 0.31,
+        "ci_high": 0.473,
+        "p_value": 4.33e-21,
+        "prevalence": 0.1128,
+        "impact": 0.0441,
+        "planted": 0.55
+      },
+      {
+        "theme": "performance_fast",
+        "label": "Fast and responsive",
+        "coef": 0.529,
+        "ci_low": 0.435,
+        "ci_high": 0.624,
+        "p_value": 4.55e-28,
+        "prevalence": 0.0691,
+        "impact": 0.0366,
+        "planted": 0.56
+      },
+      {
+        "theme": "love_the_design",
+        "label": "Love the design",
+        "coef": 0.699,
+        "ci_low": 0.629,
+        "ci_high": 0.769,
+        "p_value": 4.64e-83,
+        "prevalence": 0.1265,
+        "impact": 0.0884,
+        "planted": 0.78
+      },
+      {
+        "theme": "easy_to_use",
+        "label": "Easy to use",
+        "coef": 0.822,
+        "ci_low": 0.754,
+        "ci_high": 0.89,
+        "p_value": 8.44e-121,
+        "prevalence": 0.1472,
+        "impact": 0.1211,
+        "planted": 1.01
+      },
+      {
+        "theme": "great_support",
+        "label": "Great support",
+        "coef": 1.039,
+        "ci_low": 0.963,
+        "ci_high": 1.116,
+        "p_value": 1.12e-150,
+        "prevalence": 0.0767,
+        "impact": 0.0797,
+        "planted": 1.349
+      }
+    ],
+    "caveats": [
+      "Associations, not causes: the regression shows which themes travel with lower or higher scores.",
+      "Only respondents who wrote a comment are included, and themes come from the classifier, so tagging errors shrink the effects toward zero.",
+      "Themes that are often mentioned together share credit, so read close coefficients as a tie."
+    ]
+  },
+  "timings": {
+    "generate": 1.27,
+    "train": 2.04,
+    "evaluate": 4.15,
+    "classify_all": 10.47,
+    "emerging": 11.82,
+    "discovery": 14.25
+  }
+}

@@ -1,0 +1,57 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Lint
+        run: |
+          uvx ruff check .
+          uvx ruff format --check .
+      - name: Test
+        run: uv run --python 3.12 --group dev pytest -q
+
+  quality-gate:
+    # Full 25,000 text run with the simulated LLM tier. Fails if cascade micro F1 on the labeled test set
+    # drops below 0.93 or the planted quarter 4 release bug is not flagged.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Evaluate and gate
+        run: |
+          uv run --python 3.12 vocinsights --texts 25000 eval --gate --floor 0.93 \
+            --out reports/eval.json --summary "$GITHUB_STEP_SUMMARY"
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voc-eval
+          path: reports/eval.json
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t voc-insights:ci .
+      - name: Smoke test container
+        run: |
+          docker run -d --name voc -p 8873:8873 -e VOC_TEXTS=4000 voc-insights:ci
+          for i in $(seq 1 60); do curl -sf http://localhost:8873/healthz && break; sleep 2; done
+          curl -sf http://localhost:8873/healthz
+          curl -sf -H 'content-type: application/json' \
+            -d '{"text":"I was charged twice this month and support never replied."}' \
+            http://localhost:8873/api/classify | grep billing_errors
+          curl -sf http://localhost:8873/api/emerging | grep '"caught":true'
+          curl -sf 'http://localhost:8873/api/report?format=md' | grep 'NPS drivers'
+          curl -sf http://localhost:8873/metrics | grep voc_eval_micro_f1
+          docker logs voc | head -5
+          docker rm -f voc
